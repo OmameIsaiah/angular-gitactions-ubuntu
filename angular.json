@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-github-actions-amazon-s3-test": {
+    "website": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-github-actions-amazon-s3-test",
+            "outputPath": "dist/website",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-github-actions-amazon-s3-test:build:production"
+              "browserTarget": "website:build:production"
             },
             "development": {
-              "browserTarget": "angular-github-actions-amazon-s3-test:build:development"
+              "browserTarget": "website:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-github-actions-amazon-s3-test:build"
+            "browserTarget": "website:build"
           }
         },
         "test": {
