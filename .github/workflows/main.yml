@@ -30,13 +30,14 @@ jobs:
     - name: NPM build Angular Production
       run: npm run build:prod
       
-    - name: Copy file via ssh key
+    - name: Copy file via ssh key #Executing remote ssh commands
       uses: appleboy/scp-action@master
       env:
         HOST: ${{ secrets.SWIPE_HOST }}
         USERNAME: ${{ secrets.SWIPE_USERNAME }}
         PORT: ${{ secrets.SWIPE_PORT }}
         KEY: ${{ secrets.SWIPE_SSH }}
+        passphrase:  ${{secrets.SWIPE_PASSPHRASE}}
       with:
         source: "./dist/angular-github-actions-amazon-s3-test/"
         target: "/home/swipe/public_html/"
