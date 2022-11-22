@@ -4,11 +4,10 @@ on:
   push:
     branches:
       - 'main'
-
 jobs:
-  build:
-    # using Ubuntu
+  deployment:
     runs-on: ubuntu-latest
+    environment: production
     defaults:
       run:
         working-directory: ./
