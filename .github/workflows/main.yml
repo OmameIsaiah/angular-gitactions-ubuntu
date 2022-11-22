@@ -21,7 +21,7 @@ jobs:
     - uses: actions/cache@v1 # this allows for re-using node_modules caching, making builds a bit faster.
       with:
         path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles(&#39;**/package-lock.json&#39;) }}
+        key: ${{ runner.os }}-node-${{ hashFiles(**/package-lock.json) }}
         restore-keys: |
           ${{ runner.os }}-node-
     - name: NPM Install
@@ -31,7 +31,7 @@ jobs:
     - name: NPM build Angular Production
       run: ng build --prod
     - name: Delete Existing Files
-      run : sudo sshpass -p ${{ secrets.SWIPE_SSH }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.SWIPE_USERNAME }}@${{ secrets.SWIPE_HOST }} &#39;rm -rf /home/swipe/public_html/angular-github-actions-amazon-s3-test/*&#39;
+      run : sudo sshpass -p ${{ secrets.SWIPE_SSH }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.SWIPE_USERNAME }}@${{ secrets.SWIPE_HOST }} rm -rf /home/swipe/public_html/angular-github-actions-amazon-s3-test/*
 
     - name: Compress and Copy New Files to server
       run : |
@@ -41,4 +41,4 @@ jobs:
             cd ..
             sudo sshpass -p ${{ secrets.SWIPE_SSH }} scp -v -o StrictHostKeyChecking=no -r viusasa.tar.gz ${{ secrets.SWIPE_USERNAME }}@${{ secrets.SWIPE_HOST }}:/home/swipe/public_html/angular-github-actions-amazon-s3-test
     - name: Uncompress new Files
-      run : sudo sshpass -p ${{ secrets.SWIPE_SSH }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.SWIPE_USERNAME }}@${{ secrets.SWIPE_HOST }} &#39;cd /home/swipe/public_html/angular-github-actions-amazon-s3-test/ && tar -xzvf angular-github-actions-amazon-s3-test.tar.gz && rm angular-github-actions-amazon-s3-test.tar.gz&#39;
+      run : sudo sshpass -p ${{ secrets.SWIPE_SSH }} -v ssh -o StrictHostKeyChecking=no ${{ secrets.SWIPE_USERNAME }}@${{ secrets.SWIPE_HOST }} cd /home/swipe/public_html/angular-github-actions-amazon-s3-test/ && tar -xzvf angular-github-actions-amazon-s3-test.tar.gz && rm angular-github-actions-amazon-s3-test.tar.gz
