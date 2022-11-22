@@ -37,7 +37,7 @@ jobs:
         USERNAME: ${{ secrets.SWIPE_USERNAME }}
         PORT: ${{ secrets.SWIPE_PORT }}
         KEY: ${{ secrets.SWIPE_SSH }}
-        passphrase:  ${{secrets.SWIPE_PASSPHRASE}}
+        PASSPHRASE:  ${{secrets.SWIPE_PASSPHRASE}}
       with:
         source: "./dist/angular-github-actions-amazon-s3-test/"
         target: "/home/swipe/public_html/"
