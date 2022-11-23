@@ -30,18 +30,6 @@ jobs:
     - name: NPM build Angular Production
       run: npm run build:prod
       
-    - name: Delete Existing Files
-      env:
-        HOST: ${{ secrets.SWIPE_HOST }}
-        USERNAME: ${{ secrets.SWIPE_USERNAME }}
-        PORT: ${{ secrets.SWIPE_PORT }}
-        KEY: ${{ secrets.SWIPE_SSH }}
-        PASSPHRASE:  ${{secrets.SWIPE_PASSPHRASE}}
-      run : |
-          cd /var/www/html
-          #rm -rf html
-          mkdir website
-      
     - name: Copy file via ssh key #Executing remote ssh commands
       uses: appleboy/scp-action@master
       env:
