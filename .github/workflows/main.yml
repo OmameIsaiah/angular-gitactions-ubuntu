@@ -40,5 +40,5 @@ jobs:
         PASSPHRASE:  ${{secrets.SWIPE_PASSPHRASE}}
       with:
         source: "./dist/angular-github-actions-amazon-s3-test/"
-        target: "/home/swipe/public_html/angular-github-actions-amazon-s3-test/"
+        target: "/var/www/html/"
         strip_components: 3 # this is important
