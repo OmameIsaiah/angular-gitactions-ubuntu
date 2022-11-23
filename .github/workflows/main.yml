@@ -31,9 +31,10 @@ jobs:
       run: npm run build:prod
       
     - name: Delete Existing Files
-      run: cd /var/www/
-           rm -rf html
-           mkdir html
+      run : |
+            cd /var/www/
+            rm -rf html
+            mkdir html
       env:
         HOST: ${{ secrets.SWIPE_HOST }}
         USERNAME: ${{ secrets.SWIPE_USERNAME }}
